@@ -63,6 +63,11 @@ def image_diff(image_a, image_b):
     :param image_b: input image A
     :return: the total difference "score" between two images
     """
+
+    image_a_size = image_a.size
+	image_b_size = image_b.size
+	if image_a_size != image_b_size:
+		image_b = image_b.resize(image_a_size)
     histogram_diff = total_histogram_diff(pixel_diff(image_a, image_b))
 
     return histogram_diff
